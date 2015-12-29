@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.wodify.cordova.plugin.unimag-swiper"
+    version="0.0.1">
+
+    <name>Cordova-Plugin-UniMag-Swiper</name>
+
+    <description>Cordova plugin for IDTech Unimag II, Unimag Pro, and Shuttle mobile credit card swipers.</description>
+
+    <repo>https://github.com/elizabethrego/cordova-plugin-unimag-swiper.git</repo>
+
+    <keyword>wodify, idtech, unimag, swiper, card reader, credit card</keyword>
+
+    <license>Apache 2.0 License</license>
+
+    <author>Elizabeth Rego</author>
+
+    <!-- cordova -->
+    <engines>
+	  <engine name="cordova" version=">=3.5.0"/>
+	</engines>
+
+    <!-- js -->
+	<js-module src="www/unimag-swiper.js" name="UniMag-Swiper">
+		<clobbers target="cordova.plugins.unimag.swiper" />
+	</js-module>
+
+     <!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+            <feature name="UnimagSwiper" >
+                <param name="android-package" value="com.wodify.cordova.plugin.unimagswiper.UnimagSwiper"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+        	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+        	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+        	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+        	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        	<uses-permission android:name="android.permission.INTERNET" />
+    	</config-file>
+
+		<source-file src="src/android/UniMag_SDK_v5.0.jar" target-dir="libs" framework="true" />
+
+        <source-file src="src/android/idt_unimagcfg.xml" target-dir="res/raw" />
+
+		<source-file src="src/android/UnimagSwiper.java" target-dir="src/com/wodify/cordova-unimag-swiper" />
+	</platform>
+
+    <!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+            <feature name="UnimagSwiper">
+                <param name="ios-package" value="UnimagSwiper" />
+            </feature>
+        </config-file>
+
+		<source-file src="src/ios/IDTECH_UniMag.a" framework="true" />
+
+		<header-file src="src/ios/uniMag.h" />
+
+		<header-file src="src/ios/UnimagSwiper.h" />
+		<source-file src="src/ios/UnimagSwiper.m" />
+
+        <framework src="MediaPlayer.framework"/>
+	</platform>
+
+</plugin>
+

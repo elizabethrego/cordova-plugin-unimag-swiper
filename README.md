@@ -1,0 +1,1 @@
+This will soon be a wonderful plugin for swiping credit cards using the IDTech UniMag II, UniMag Pro, or Shuttle mobile swipers.
