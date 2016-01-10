@@ -4,7 +4,7 @@
 #import <Foundation/Foundation.h>
 
 //Versioning
-#define UMSDK_VERSION @"7.16"
+#define UMSDK_VERSION @"7.18"
 #define UMSDK_CUSTOMIZATION 0
 
 //Notification identifiers used with NSNotificationCenter
