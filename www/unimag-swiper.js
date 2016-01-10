@@ -68,7 +68,6 @@ channel.deviceready.subscribe(function () {
 	}
 
 	activate(success, error);
-	console.log('subscribed');
 });
 
 module.exports = Swiper;
