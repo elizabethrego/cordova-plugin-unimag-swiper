@@ -114,7 +114,7 @@ UmReader readerType;
             // Store status of connection task
             UmRet activated = [reader startUniMag:YES];
 
-            if (activated == UMRET_SUCCESS) {
+            if (activated == UMRET_SUCCESS || activated == UMRET_NO_READER) {
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
             } else result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                 messageAsString:[NSString stringWithFormat:
