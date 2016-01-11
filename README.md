@@ -29,6 +29,10 @@ Finally, there are two settings you can configure on the reader. The first is to
  
 If any other value than these is sent, the reader type will not be set.
 
+NOTE: To use this plugin for iOS you'll need to disable bitcode. You can do this by clicking on your project in Xcode and going to Build Settings. Search for 'bitcode', and you'l see an 'Enable Bitcode' setting. Change this to 'No'. There is currently no way for me to configure this through the plugin, as far as I'm aware.
+
+You can also include this plugin in your application to accomplish the same thing: https://github.com/akofman/cordova-plugin-disable-bitcode.
+
 ## Events
 See Sample section for how exactly to capture the events listed below.
 
