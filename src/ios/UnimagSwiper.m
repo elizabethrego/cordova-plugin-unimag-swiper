@@ -207,7 +207,7 @@ UmReader readerType;
 
     if ([command.arguments count] > 0) {
         // Store preference
-        enableLogs = [command.arguments objectAtIndex:0];
+        enableLogs = (BOOL) [command.arguments objectAtIndex:0];
 
         // Apply preference now if possible, otherwise it will be
         // applied when swiper is started
