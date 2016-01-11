@@ -65,6 +65,8 @@
 		<header-file src="src/ios/UnimagSwiper.h" />
 		<source-file src="src/ios/UnimagSwiper.m" />
 
+        <framework src="AVFoundation.framework"/>
+        <framework src="AudioToolbox.framework"/>
         <framework src="MediaPlayer.framework"/>
 	</platform>
 
