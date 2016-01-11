@@ -17,7 +17,7 @@ The IDTech reader will be __activated__ automatically after the Cordova "devicer
 
 A reader may be either __attached__ or __detached__. It is attached when it is plugged into the mobile device running your application. While the reader is activated, once a reader is attached, (or if it is already attached upon application startup) the SDK will begin a connection task with the reader. When this task begins, a __"connecting"__ event will be fired from the plugin. After the task has finished successfully, a __"connected"__ event will fire. If a connection could not be established, a __"timeout"__ event will be fired instead. Once you have captured the __"connected"__ event you can begin initiating the swipe process.
 
-To initiate the swipe process, call the __swipe__ method on your plugin object. By default, this will be cordova.plugins.unimag.swiper. After this method has been called you can physically swipe the card. The data will be parsed and returned if valid. This will result in a __"swipe_success"__ event containing the data. If the card data was invalid, or the swipe was otherwise unsuccessful (e.g., if it was crooked) you a __"swipe_error"__ event will be fired instead. 
+To initiate the swipe process, call the __swipe__ method on your plugin object. By default, this will be cordova.plugins.unimag.swiper. After this method has been called you can physically swipe the card. The data will be parsed and returned if valid. This will result in a __"swipe_success"__ event containing the data (it will be stringified, you will need to parse it). If the card data was invalid, or the swipe was otherwise unsuccessful (e.g., if it was crooked) you a __"swipe_error"__ event will be fired instead. 
 
 You can also manually deactivate and activate the reader by calling the __deactivate__ or __activate__ methods on your plugin object. Once the reader has been deactivated, it will not listen to attachment/detachment and will never attempt a connection. The reader need not be attached for it to be activated successfully - if it is activated, it will automatically detect attachment/detachment and handle connection as such.
 
@@ -39,7 +39,7 @@ See Sample section for how exactly to capture the events listed below.
 | disconnected     | iOS, Android | reader was disconnected                                          | none                                                                     |
 | timeout          | iOS, Android | connection or swipe task has timed out                           | string: message from SDK regarding timeout type                          |
 | swipe_processing | iOS, Android | swipe has been received and is processing                        | none                                                                     |
-| swipe_success    | iOS, Android | card data has been parsed successfully                           | object: card data (properties - card_number, expiry_month, expiry_year, first_name, & last_name)                                                                         |
+| swipe_success    | iOS, Android | card data has been parsed successfully                           | string: use JSON.parse to get object of card data (w/ properties card_number, expiry_month, expiry_year, first_name, & last_name)                                                                         |
 | swipe_error      | iOS, Android | card data was invalid and could not be parsed                    | none                                                                     |
 | xml_error        | Android      | xml config file listing settings for devices could not be loaded | string: message from SDK regarding particular issue with XML config file |
 | connection_error | iOS          | connection task was unsuccessful                                 | string: message from plugin with reason reader could not connect         |
@@ -74,9 +74,10 @@ document.addEventListener("deviceready", function () { // $ionicPlatform.ready(f
   });
 
   cordova.plugins.unimag.swiper.on('swipe_success', function (e) {
-    console.log('cardholder name: ' + e.detail.first_name + ' ' + e.detail.last_name);
-    console.log('card number:' + e.detail.card_number);
-    console.log('expiration:' + e.detail.expiry_month + '/' + e.detail.expiry_year);
+    var data = JSON.parse(e.detail);
+    console.log('cardholder name: ' + data.first_name + ' ' + data.last_name);
+    console.log('card number:' + data.card_number);
+    console.log('expiration:' + data.expiry_month + '/' + data.expiry_year);
   });
 
   cordova.plugins.unimag.swiper.on('swipe_error', function () {
