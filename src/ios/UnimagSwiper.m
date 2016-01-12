@@ -346,10 +346,10 @@ UmReader readerType;
 */
 - (void)umSwipeReceived:(NSNotification *)notification {    
     NSData* data = [notification object];
-    NSString* cardData = [[[[NSString alloc] 
-            initWithData:data 
-            encoding:NSUTF8StringEncoding] 
-        componentsSeparatedByString:@";"] objectAtIndex:0];
+
+    NSString* cardData = [[NSString alloc] 
+        initWithData:data 
+        encoding:NSASCIIStringEncoding];
 
     NSString* parsedCardData = [self parseCardData:cardData];
 
@@ -447,6 +447,10 @@ UmReader readerType;
                 
                 [[name objectAtIndex:0] stringByTrimmingCharactersInSet:
                    [NSCharacterSet whitespaceCharacterSet]], @"last_name",
+
+                [[data componentsSeparatedByCharactersInSet:
+                        [NSCharacterSet whitespaceAndNewlineCharacterSet]]
+                    componentsJoinedByString:@""], @"trimmedUnimagData",
                 
                 nil];
 

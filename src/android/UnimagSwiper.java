@@ -536,6 +536,7 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
                 cardData.put("expiry_year", exp.substring(0, 2));
                 cardData.put("first_name", name[1].trim());
                 cardData.put("last_name", name[0].trim());
+                cardData.put("trimmedUnimagData", data.replaceAll("\\s",""));
 
                 return cardData;
             } catch (JSONException e) {
