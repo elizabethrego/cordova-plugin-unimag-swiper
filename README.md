@@ -33,6 +33,15 @@ NOTE: To use this plugin for iOS you'll need to disable bitcode. You can do this
 
 You can also include this plugin in your application to accomplish the same thing: https://github.com/akofman/cordova-plugin-disable-bitcode.
 
+### Auto Config
+Although all iOS devices should work fine with this plugin, the SDK does not support all Android devices. You will know if your device is not supported if it gets hung up on the 'connecting' event or never reaches it, although you should have more success in the former case.
+
+The SDK offers an 'auto config' process to search for a similar phone (referred to as a profile) to use when connecting. In my experience, this process worked for a Nexus 9, but not a Nexus 5x. The process may run successfully and allow you to connect, but you still may not be able to receive swiped data.
+
+A list of officially supported devices can be found <a href="http://www.idtechproducts.com/products/mobile-readers/138.html">here</a>. For devices that are not officially supported, there may be hope.   If auto config doesn't solve your problem, download the <a href="https://play.google.com/store/apps/details?id=IDTech.MSR.uniMag.Demo&hl=en">Unimag Demo app</a> from the Google Play store and try using their auto config feature to verify that your device is truly unsupported.
+
+To run auto config through this plugin, just call the __autoConfig__ method on your plugin object. It won't work while a reader is unplugged or swipe mode is in progress. An __"autoconfig_completed"__ event will be fired if the process finishes, otherwise an __"autoconfig_error"__ or __"xml_error"__ event will be fired instead. 
+
 ## Events
 See Sample section for how exactly to capture the events listed below.
 
@@ -45,8 +54,10 @@ See Sample section for how exactly to capture the events listed below.
 | swipe_processing | iOS, Android | swipe has been received and is processing                        | none                                                                     |
 | swipe_success    | iOS, Android | card data has been parsed successfully                           | string: use JSON.parse to get object of card data w/ properties card_number, expiry_month, expiry_year, first_name, last_name, & trimmedUnimagData (raw data from reader)                                                                         |
 | swipe_error      | iOS, Android | card data was invalid and could not be parsed                    | none                                                                     |
-| xml_error        | Android      | xml config file listing settings for devices could not be loaded | string: message from SDK regarding particular issue with XML config file |
 | connection_error | iOS          | connection task was unsuccessful                                 | string: message from plugin with reason reader could not connect         |
+| xml_error        | Android      | xml config file listing settings for devices could not be loaded, can also be called during auto config if the device's volume could not be raised | string: message from SDK regarding particular issue with XML config file |
+| autoconfig_completed        | Android      | auto config process completed and connection should now begin | none |
+| autoconfig_error        | Android      | auto config process failed or timed out | string: message from SDK in case of timeout |
 
 
 ## Sample

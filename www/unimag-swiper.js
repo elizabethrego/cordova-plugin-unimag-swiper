@@ -31,7 +31,7 @@ Swiper.activate = function(success, error) {
 
 Swiper.deactivate = function(success, error) {
 	exec(success, error, 'UnimagSwiper', 'deactivateReader', []);
-}
+};
 
 Swiper.swipe = function (success, error) {
 	exec(success, error, 'UnimagSwiper', 'swipe', []);
@@ -46,19 +46,25 @@ Swiper.setReaderType = function (type, success, error) {
 	if (readerType) {
 		exec(success, error, 'UnimagSwiper', 'setReaderType', [readerType]);
 	} else console.log('Could not set reader type - invalid type "' + type + '" provided.');
-}
+};
+
+Swiper.autoConfig = function (success, error) {
+	if (device.platform == 'Android') {
+		exec(success, error, 'UnimagSwiper', 'autoConfig', []);
+	}
+};
 
 Swiper.fireEvent = function (event, data) {
 	var customEvent = new CustomEvent(event, { 'detail': data} );
 	window.dispatchEvent(customEvent);
-}
+};
 
 Swiper.on = function (event, callback, scope) {
 	window.addEventListener(event, callback.bind(scope || window));
-}
+};
 
 channel.deviceready.subscribe(function () {
-	var success= function () {
+	var success = function () {
 		console.log('Unimag Swiper initialized.');
 	};
 

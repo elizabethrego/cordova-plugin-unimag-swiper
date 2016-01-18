@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -39,6 +41,12 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     // Broadcast receiver to detect headset events
     private final HeadsetReceiver headsetReceiver = new HeadsetReceiver();
 
+    // Auto Config profile to use for connection on unsupported device
+    private static StructConfigParameters profile = null;
+
+    // Store name of file to retrieve and set Auto Config Profile
+    private final static String PROFILE_PREFS = "AutoConfigProfile";
+
     // Reader from SDK to handle all swipe functionality
     private uniMagReader reader;
 
@@ -54,6 +62,9 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     // Stores user preference, default false
     private boolean enableLogs = false;
 
+    // Indicates if Auto Config process is running
+    private boolean autoConfigRunning = false;
+
     // Regex to parse raw card data
     private Pattern cardParserPtrn = null;
 
@@ -68,11 +79,14 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     */
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+
         super.initialize(cordova, webView);
 
         context = this.cordova.getActivity().getApplicationContext();
 
         cardParserPtrn = Pattern.compile("%B(\\d+)\\^([^\\^]+)\\^(\\d{4})");
+
+        loadAutoConfigProfile();
     }
 
     /**
@@ -131,7 +145,7 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
             activateReader(callbackContext);
         } else if ("deactivateReader".equals(action)) {
             deactivateReader(callbackContext);
-        }else if ("swipe".equals(action)) {
+        } else if ("swipe".equals(action)) {
             swipe(callbackContext);
         } else if ("enableLogs".equals(action)) {
             if (args.length() > 0) {
@@ -141,6 +155,8 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
             if (args.length() > 0) {
                 setReaderType(callbackContext, args.getString(0));
             } else callbackContext.error("Reader type not specified.");
+        } else if ("autoConfig".equals(action)) {
+            autoConfig(callbackContext);
         } else {
             // Method not found.
             return false;
@@ -225,7 +241,7 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     *        Used when calling back into JavaScript
     */
     private void swipe(final CallbackContext callbackContext) {
-        if (reader != null) {
+        if (reader != null && !autoConfigRunning) {
             if (readerConnected == true) {
                 cancelSwipe();
                 if (reader.startSwipeCard()) {
@@ -260,7 +276,7 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
 
         // Apply preference now if possible, otherwise it will be
         // applied when swiper is started
-        if (reader != null) {
+        if (reader != null && !autoConfigRunning) {
             reader.setVerboseLoggingEnable(enableLogs);
         }
 
@@ -282,7 +298,7 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
 
             // Apply type now if possible, otherwise it will be
             // applied when swiper is started.
-            if (reader != null) {
+            if (reader != null && !autoConfigRunning) {
                 stopUnimagSwiper();
                 startUnimagSwiper();
             }
@@ -294,6 +310,29 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
         }
     }
 
+    /** 
+     * Starts Auto Config process to find a profile that can be 
+     * used for connection on an unsupported device.
+     *
+     * @param callbackContext 
+     *        Used when calling back into JavaScript
+     */
+    private void autoConfig(final CallbackContext callbackContext) {
+        if (reader == null) {
+            startUnimagSwiper();
+        }
+        if (!autoConfigRunning) {
+            cancelSwipe();
+
+            String file = getXMLConfigFile();
+
+            if (reader.startAutoConfig(file, true)) {
+                autoConfigRunning = true;
+
+                callbackContext.success();
+            } else callbackContext.error("Failed to start Auto Config.");
+        } else callbackContext.error("Auto Config is already running.");
+    }
 
     /***************************************************
     * SDK CALLBACKS
@@ -326,21 +365,27 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     @Override
     public void onReceiveMsgDisconnected() {
         readerConnected = false;
+        autoConfigRunning = false;
         fireEvent("disconnected"); 
     }
 
     /**
-    * Receive messages from the SDK when powerup or card swipe mode is 
-    * timed out, however, we cannot distinguish between the two without
-    * utilizing a stopwatch, which is probably overkill considering the
-    * timeout message, but may eventually be implemented.
+    * Receive messages from the SDK when powerup, card swipe mode, or 
+    * auto config is timed out. However, we cannot distinguish between
+    * the former two timeouts without utilizing a stopwatch, which is 
+    * probably overkill considering the timeout message, but may 
+    * eventually be implemented. Auto config timeouts will be handled
+    * separately.
     * 
     * @param strTimeoutMsg 
     *        Message from the SDK
     */
     @Override
     public void onReceiveMsgTimeout(String strTimeoutMsg) {
-        fireEvent("timeout", strTimeoutMsg);
+        if (autoConfigRunning) {
+            autoConfigRunning = false;
+            fireEvent("autoconfig_error", strTimeoutMsg);
+        } else fireEvent("timeout", strTimeoutMsg);
     }
 
     /**
@@ -387,7 +432,8 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
         //      - Failed to read XML file.
         //      - Can't download XML file.
         //      - Failed to increase media volume.
-
+        //          NOTE: This can occur after starting
+        //          Auto Config.
         fireEvent("xml_error", strMessage);
     }
 
@@ -424,6 +470,30 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
         }
     }
 
+    /**
+     * Receive messages from SDK when Auto Config has completed.
+     * Note that just because Auto Config has completed does not mean it
+     * was successful, i.e., the profile found may still not work.
+     * @param profile 
+     *        Profile found by Auto Config, used to connect with
+     */
+    @Override
+    public void onReceiveMsgAutoConfigCompleted(StructConfigParameters profile) {
+        autoConfigRunning = false;
+        // Store profile locally
+        this.profile = profile;
+        
+        // Store profile in SharedPrefences for persistence
+        boolean storeSuccess = storeAutoConfigProfile(profile);
+
+        if (storeSuccess) {
+            fireEvent("autoconfig_completed");
+
+            // Totally reset reader to apply profile
+            deactivateReader(null);
+            activateReader(null);
+        } else fireEvent("autoconfig_error", "Failed to save profile.");
+    }
 
     /***************************************************
     * UNUSED SDK CALLBACKS
@@ -434,19 +504,16 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
     public void onReceiveMsgToSwipeCard() {}
 
     @Override
-    public void onReceiveMsgAutoConfigProgress(int progressValue) {}
-
-    @Override
-    public void onReceiveMsgAutoConfigProgress(int percent, double result, String profileName) {}
-
-    @Override
-    public void onReceiveMsgAutoConfigCompleted(StructConfigParameters profile) {}
-
-    @Override
     public void onReceiveMsgCommandResult(int commandID, byte[] cmdReturn) {}
 
     @Override
     public void onReceiveMsgToCalibrateReader() {}
+
+    @Override
+    public void onReceiveMsgAutoConfigProgress(int progressValue) {}
+
+    @Override
+    public void onReceiveMsgAutoConfigProgress(int percent, double result, String profileName) {}
 
     @Override
     @Deprecated
@@ -474,11 +541,16 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
         reader.setVerboseLoggingEnable(enableLogs);
         reader.setTimeoutOfSwipeCard(30); // seconds 
 
-        // XML file is used by SDK to retrieve device-specific settings
-        // for the swiper. It is stored within this plugin's resources
-        // but may also be downloaded from the ID Tech web server.
-        reader.setXMLFileNameWithPath(getXMLConfigFile());
-        reader.loadingConfigurationXMLFile(true);
+        if (profile == null) {
+            // XML file is used by SDK to retrieve device-specific settings
+            // for the swiper. It is stored within this plugin's resources
+            // but may also be downloaded from the ID Tech web server.
+            reader.setXMLFileNameWithPath(getXMLConfigFile());
+            reader.loadingConfigurationXMLFile(false);
+        } else {
+            // Device is not supported and must use profile from Auto Config
+            reader.connectWithProfile(profile);
+        }
     }
     
     /** 
@@ -575,11 +647,86 @@ public class UnimagSwiper extends CordovaPlugin implements uniMagReaderMsg {
             File xmlConfigFile = new File(fileNameWithPath);
             return xmlConfigFile.exists() ? fileNameWithPath : null;
         } catch (Exception e) {
-        e.printStackTrace();
-        return null;
+            e.printStackTrace();
+            return null;
         }
     }
 
+    /**
+     * Store profile retrieved by Auto Config process in SharedPreferences so
+     * it can be loaded each time app is opened.
+     *
+     * @param profile
+     *        Profile from Auto Config
+     * @return
+     *         True if store was successful
+     */
+    private boolean storeAutoConfigProfile(StructConfigParameters profile) {
+        // Check that profile is valid
+        if (profile == null) {
+            return false;
+        }
+
+        // Create or open SharedPreferences file
+        SharedPreferences.Editor profileEditor = context.getSharedPreferences(PROFILE_PREFS, Context.MODE_PRIVATE).edit();
+
+        profileEditor.putInt("direction_output_wave", profile.getDirectionOutputWave());
+        profileEditor.putInt("frequence_input", profile.getFrequenceInput());
+        profileEditor.putInt("frequence_output", profile.getFrequenceOutput());
+        profileEditor.putInt("record_buffer_size", profile.getRecordBufferSize());
+        profileEditor.putInt("record_read_buffer_size", profile.getRecordReadBufferSize());
+        profileEditor.putInt("wave_direction", profile.getWaveDirection());
+        profileEditor.putInt("high_threshold", profile.gethighThreshold());
+        profileEditor.putInt("low_threshold", profile.getlowThreshold());
+        profileEditor.putInt("min", profile.getMin());
+        profileEditor.putInt("max", profile.getMax());
+        profileEditor.putInt("baud_rate", profile.getBaudRate());
+        profileEditor.putInt("pre_amble_factor", profile.getPreAmbleFactor());
+        profileEditor.putInt("shuttle_channel", profile.getShuttleChannel() & 0xff);
+        profileEditor.putInt("force_headset_plug", profile.getForceHeadsetPlug());
+        profileEditor.putInt("use_voice_recognition", profile.getUseVoiceRecognition());
+        profileEditor.putInt("volume_level_adjust", profile.getVolumeLevelAdjust());
+
+        return profileEditor.commit();
+    }
+
+    /**
+     * Loads profile retrieved by Auto Config process into app via 
+     * SharedPreferences.
+     */
+    private void loadAutoConfigProfile() {
+        SharedPreferences profilePrefs = context.getSharedPreferences(PROFILE_PREFS, Context.MODE_PRIVATE);
+
+        if (profilePrefs.getInt("frequence_input", 0) != 0) {
+            profile = new StructConfigParameters();
+
+            profile.setDirectionOutputWave((short) profilePrefs.getInt("direction_output_wave", 0));
+            profile.setFrequenceInput(profilePrefs.getInt("frequence_input", 0));
+            profile.setFrequenceOutput(profilePrefs.getInt("frequence_output", 0));
+            profile.setRecordBufferSize(profilePrefs.getInt("record_buffer_size", 0));
+            profile.setRecordReadBufferSize(profilePrefs.getInt("record_read_buffer_size", 0));
+            profile.setWaveDirection(profilePrefs.getInt("wave_direction", 0));
+            profile.sethighThreshold((short) profilePrefs.getInt("high_threshold", 0));
+            profile.setlowThreshold((short) profilePrefs.getInt("low_threshold", 0));
+            profile.setMin((short) profilePrefs.getInt("min", 0));
+            profile.setMax((short) profilePrefs.getInt("max", 0));
+            profile.setBaudRate(profilePrefs.getInt("baud_rate", 0));
+            profile.setPreAmbleFactor((short) profilePrefs.getInt("pre_amble_factor", 0));
+            profile.setShuttleChannel((byte) profilePrefs.getInt("shuttle_channel", 0));
+            profile.setForceHeadsetPlug((short) profilePrefs.getInt("force_headset_plug", 0));
+            profile.setUseVoiceRecognition((short) profilePrefs.getInt("use_voice_recognition", 0));
+            profile.setVolumeLevelAdjust((short) profilePrefs.getInt("volume_level_adjust", 0));
+        }
+    }
+
+    /**
+     * Perform either a success or error callback on given CallbackContext
+     * depending on state of msg.
+     * @param callbackContext
+     *        Used when calling back into JavaScript
+     * @param msg
+     *        Error message, or null if success
+     */
     private void sendCallback(CallbackContext callbackContext, String msg) {
         // callbackContext will only be null when caller called from
         // lifecycle methods (i.e., never from containing app).
