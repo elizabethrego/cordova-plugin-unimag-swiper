@@ -1,9 +1,4 @@
-var exec = require('cordova/exec'),
-	channel = require('cordova/channel');
-
-var activate = function(success, error) {
-	exec(success, error, 'UnimagSwiper', 'activateReader', []);
-};
+var exec = require('cordova/exec');
 
 var getReaderTypes = function() {
 	if (device.platform == 'Android') {
@@ -26,7 +21,7 @@ var getReaderTypes = function() {
 var Swiper = function() {};
 
 Swiper.activate = function(success, error) {
-	activate(success, error);
+	exec(success, error, 'UnimagSwiper', 'activateReader', []);
 };
 
 Swiper.deactivate = function(success, error) {
@@ -62,17 +57,5 @@ Swiper.fireEvent = function (event, data) {
 Swiper.on = function (event, callback, scope) {
 	window.addEventListener(event, callback.bind(scope || window));
 };
-
-channel.deviceready.subscribe(function () {
-	var success = function () {
-		console.log('Unimag Swiper initialized.');
-	};
-
-	var error = function (error) {
-		console.log('Unimag Swiper could not be initialized - ' + error);
-	}
-
-	activate(success, error);
-});
 
 module.exports = Swiper;
