@@ -20,7 +20,10 @@
     <!-- cordova -->
     <engines>
 	  <engine name="cordova" version=">=3.5.0"/>
-	</engines>
+    </engines>
+    
+    <!-- dependencies -->
+    <dependency id="cordova-plugin-device" />
 
     <!-- js -->
 	<js-module src="www/unimag-swiper.js" name="UniMag-Swiper">
