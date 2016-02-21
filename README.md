@@ -65,7 +65,7 @@ The sample demonstrates how to activate the reader, capture events, and swipe a 
 
 ```javascript
 document.addEventListener("deviceready", function () { // $ionicPlatform.ready(function() {
-  cordova.plugin.unimag.swiper.activate();
+  cordova.plugins.unimag.swiper.activate();
   cordova.plugins.unimag.swiper.enableLogs(true);
   cordova.plugins.unimag.swiper.setReaderType('unimag_ii');
 
