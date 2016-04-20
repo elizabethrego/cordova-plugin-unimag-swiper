@@ -434,7 +434,7 @@ UmReader readerType;
 
         exp = [data substringWithRange:[[matches objectAtIndex:0] rangeAtIndex:3]];
 
-        if (num && name[0] && name[1] && exp) {
+        if (num && [name count] >= 2 && name[0] && name[1] && exp) {
             NSDictionary* cardData = [[NSDictionary alloc] initWithObjectsAndKeys:
                 num, @"card_number",
 
