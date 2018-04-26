@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- uniMag SDK Configuration ver5.0.1-->
+<!-- uniMag SDK Configuration ver5.0.13-->
 <IDTECHPRODUCTS>
  <Summary>
   <Version>
    <SDKMajorVersion>5</SDKMajorVersion>
    <SDKMinorVersion>0</SDKMinorVersion>
-   <XMLVersion>1</XMLVersion>
+   <XMLVersion>13</XMLVersion>
   </Version>
   <PhoneList>
+   <Amazon>amazon</Amazon>
    <Moto>motorola</Moto>
    <Htc>htc</Htc>
    <Samsung>samsung</Samsung>
@@ -32,6 +33,22 @@
    <zte>zte</zte>
   </PhoneList>
  </Summary>
+ <amazon>
+  <kfarwi>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </kfarwi> 
+  <kfaswi>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </kfaswi> 
+ </amazon>
  <oneplus>
   <a0001>
    <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
@@ -57,7 +74,37 @@
    <baudRate>9600</baudRate>
   </n1> 
  </oppo>
+ <sunmi>
+  <v1-b18>
+   <support_status val="shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </v1-b18>
+ </sunmi>
  <motorola>
+  <nexus6>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </nexus6>
+  <xt1060>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </xt1060>
+  <xt1064>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </xt1064>
   <xt1049>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -100,7 +147,7 @@
    <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave val="4.1.2">0</directionOutputWave>
    <InputFreq>32000</InputFreq>
-   <OutputFreq>24000</OutputFreq>
+   <OutputFreq>48000</OutputFreq>
    <RecBuffSize>25600</RecBuffSize>
    <ReadRecBuffSize>6144</ReadRecBuffSize>
    <baudRate>9600</baudRate>
@@ -552,6 +599,44 @@
   </htc6435lvw>
  </htc>
  <samsung>
+  <sm-p605v>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-p605v>
+  <samsung-sm-g920a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g920a>
+  <sm-n910p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-n910p>
+  <samsung-sm-t337a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </samsung-sm-t337a>
+  <sm-t311>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <RecBuffSize>8192</RecBuffSize>
+   <ReadRecBuffSize>163840</ReadRecBuffSize>
+   <baudRate>9600</baudRate>
+  </sm-t311>
   <sm-t210>
    <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -570,7 +655,7 @@
    <powerupLastBeforeCMD>1500</powerupLastBeforeCMD>
   </sm-t210r>
   <sm-t230nu>
-   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
@@ -619,7 +704,15 @@
    <ReadRecBuffSize>163840</ReadRecBuffSize>
    <baudRate>4800</baudRate>
    <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
-  </sph-l710>        
+  </sph-l710>  
+  <sph-l710t>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </sph-l710t>  
   <sgh-i717d>
    <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1198,6 +1291,27 @@
   </huaweiu8800-51>
  </huawei>
  <lge>
+  <vs995>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </vs995>
+  <lglk430>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lglk430>
+  <lg-v496>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lg-v496>
   <lg-p930>
    <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1212,6 +1326,20 @@
    <OutputFreq>48000</OutputFreq>
    <baudRate>4800</baudRate>
   </lg-e739>
+  <lg-v400>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lg-v400>
+  <lg-v410>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lg-v410>
   <vs9104g>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1317,7 +1445,7 @@
    <baudRate>2400</baudRate>
   </vs8404g>
   <nexus4>
-   <support_status val="um2=m;um2i=m;shuttle=m"> </support_status>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>16000</InputFreq>
    <OutputFreq>48000</OutputFreq>
@@ -1342,6 +1470,20 @@
   </lg-p659>
  </lge>
  <asus>
+  <P00A>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </P00A>
+  <me173x>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </me173x>
   <k012>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1419,6 +1561,15 @@
    <baudRate>9600</baudRate>
   </dellstreak7>
  </dellinc.>
+ <dell>
+  <VENUE105050>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </VENUE105050>
+ </dell>
  <sharp>
   <is03>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
@@ -1446,6 +1597,13 @@
   </at100>
  </toshiba>
  <kyocera>
+  <e6715>
+   <support_status val="ump=m;um2=m;shuttle=m;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </e6715>
   <m9300>
    <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1506,6 +1664,21 @@
   </pantechp8000>
  </pantech>
  <unipay_specific>
+  <phone model_number="adr6425lvw">
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>-1</volumeLevelAdjust>   
+  </phone>
+  <phone model_number="evo">
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <directionOutputWave>1</directionOutputWave>
+   <baudRate>9600</baudRate>
+  </phone>
   <phone model_number="sm-t210r">
    <support_status val="unipay=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1559,6 +1732,33 @@
   </phone>
  </unipay_specific>
  <special_model_number>
+  <phone model_number="9024w">
+   <support_status val="um2=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>2400</baudRate>
+   <useVoiceRecognition>1</useVoiceRecognition>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </phone>
+  <phone model_number="alcatelonetouchpop7lte">
+   <support_status val="unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>4800</baudRate>
+   <useVoiceRecognition>1</useVoiceRecognition>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </phone>
+  <phone model_number="motoe(4)plus">
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <useVoiceRecognition>1</useVoiceRecognition>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </phone>
+
   <phone model_number="htconex+">
    <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>0</directionOutputWave>
@@ -1576,8 +1776,26 @@
    <baudRate>9600</baudRate>
    <useVoiceRecognition>1</useVoiceRecognition>
   </phone>
+  <phone model_number="9006w">
+   <support_status val="unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>4800</baudRate>
+   <volumeLevelAdjust>-1</volumeLevelAdjust>
+  </phone>
  </special_model_number>
  <voice-recognition>
+ <prefix_vr_alps>
+  <tab9>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </tab9>
+ </prefix_vr_alps>
  <prefix_vr_blu>
   <dashjrk>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
@@ -1625,6 +1843,20 @@
   </c8114g>
  </prefix_vr_casio>
  <prefix_vr_amazon>
+  <kfdowi>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </kfdowi>
+  <kffowi>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </kffowi>
   <sd4930ur>
    <support_status val=""> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1652,6 +1884,13 @@
   </lenovos650>
  </prefix_vr_lenovo>
  <prefix_vr_asus>
+  <asusmemopad7>
+   <support_status val="unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </asusmemopad7>
   <asus_t00g>
    <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1701,6 +1940,14 @@
   </f-05e>
  </prefix_vr_fujitsu>
  <prefix_vr_kyocera>
+  <kyocera-e6560>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </kyocera-e6560>
   <e6782>
    <support_status val=""> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1724,34 +1971,67 @@
   </m9300>
  </prefix_vr_kyocera>
  <prefix_vr_motorola>
+  <xt1585>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </xt1585>
+  <xt1527>
+   <support_status val=""> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>2400</baudRate>
+  </xt1527>
+  <xt1528>
+   <support_status val=""> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>2400</baudRate>
+  </xt1528>
+  <xt1095>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>2400</baudRate>
+  </xt1095>
+  <xt1250>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </xt1250>
+  <xt1097>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>2400</baudRate>
+  </xt1097>
   <xt1254>
-   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>24000</OutputFreq>
    <baudRate>9600</baudRate>
   </xt1254>
   <xt1093>
-   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <support_status val="shuttle=s;unipay=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
    <directionOutputWave>1</directionOutputWave>
-   <InputFreq>48000</InputFreq>
-   <OutputFreq>24000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <InputFreq>16000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>2400</baudRate>
   </xt1093>
-  <nexus6>
-   <support_status val=""> </support_status>
-   <directionOutputWave>1</directionOutputWave>
-   <InputFreq>48000</InputFreq>
-   <OutputFreq>24000</OutputFreq>
-   <baudRate>9600</baudRate>
-  </nexus6>
-  <xt1060>
-   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
-   <directionOutputWave>1</directionOutputWave>
-   <InputFreq>48000</InputFreq>
-   <OutputFreq>24000</OutputFreq>
-   <baudRate>9600</baudRate>
-  </xt1060>
   <xt1022>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -1991,6 +2271,15 @@
    <baudRate>9600</baudRate>
   </pantechp4100>  
  </prefix_vr_pantech>
+ <prefix_vr_plum>
+  <plumz516>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </plumz516>
+ </prefix_vr_plum>
  <prefix_vr_quanta>
   <qmv7a>
    <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
@@ -2008,7 +2297,444 @@
    <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
   </qmv7b>
  </prefix_vr_quanta>
+ <prefix_vr_rockchip>
+  <bzt-t101>
+   <support_status val="um2i=s;shuttle=s;unipay=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </bzt-t101>
+ </prefix_vr_rockchip>
  <prefix_vr_samsung>
+  <samsung-sm-t818a>
+   <support_status val="ump=m;um2=m;shuttle=m;unipay=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </samsung-sm-t818a>
+  <sm-t560nu>
+   <support_status val="ump=m;um2=m;shuttle=m;unipay=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t560nu>
+  <sm-g955u>
+   <support_status val="ump=s;um2=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g955u>
+  <sm-g950u>
+   <support_status val="ump=m;um2=m;shuttle=m;unipay=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g950u>
+  <sm-t377v>
+   <support_status val="um2=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-t377v>
+  <sm-t377a>
+   <support_status val="um2=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-t377a>
+  <sm-930r4>
+    <support_status val="ump=m;um2=m;shuttle=m;unipay=m"> </support_status>
+    <directionOutputWave>1</directionOutputWave>
+    <InputFreq>48000</InputFreq>
+    <OutputFreq>48000</OutputFreq>
+    <baudRate>9600</baudRate>
+   </sm-930r4>
+   <sm-t810>
+  <support_status val="ump=m;um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+  <directionOutputWave>1</directionOutputWave>
+  <InputFreq>48000</InputFreq>
+  <OutputFreq>48000</OutputFreq>
+  <baudRate>9600</baudRate> 
+   </sm-t810> 
+  <sm-t715>
+   <support_status val="ump=m;um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t715>
+  <sm-t350>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m;unipay=m"> </support_status>
+  <directionOutputWave>1</directionOutputWave>
+  <InputFreq>48000</InputFreq>
+  <OutputFreq>48000</OutputFreq>
+  <baudRate>9600</baudRate>
+  </sm-t350>
+  <sm-g530r7>
+   <support_status val="um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g530r7>
+  <sm-g386t>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g386t>
+  <sm-g900m>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g900m>
+  <sm-t567v>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t567v>
+  <sm-g928t>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g928t>
+  <samsung-sm-g928a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g928a>
+  <sm-g928v>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g928v>
+  <sm-g928p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g928p>
+  <sm-g930t>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g930t>
+  <sm-g935t>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g935t>
+  <sm-g930v>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g930v>
+  <sm-g935v>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g935v>
+  <sm-g930p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g930p>
+  <sm-g935p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g935p>
+  <samsung-sm-g930a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g930a>
+  <samsung-sm-g935a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g935a>
+  <sm-g930a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g930a>
+  <sm-g935a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g935a>
+  <samsung-sm-g890a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m;unipay=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g890a>
+  <sm-t710>
+   <support_status val="um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <powerupLastBeforeCMD>300</powerupLastBeforeCMD>
+  </sm-t710>
+  <sm-t377p>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>44100</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t377p>
+  <sm-t360>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>44100</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t360>
+  <sm-n915t>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-n915t>
+  <sm-g360p>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>44100</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-g360p>
+  <sm-t550>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <powerupLastBeforeCMD>500</powerupLastBeforeCMD>
+  </sm-t550>
+  <sm-t817v>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <powerupLastBeforeCMD>300</powerupLastBeforeCMD>
+  </sm-t817v>
+  <sm-t110>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t110>
+  <sm-n920t>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n920t>
+  <sm-n925t>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n925t>
+  <sm-n920v>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n920v>
+  <sm-n925v>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n925v>
+  <sm-n920p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n920p>
+  <sm-n925p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-n925p>
+  <samsung-sm-n920a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-n920a>
+  <samsung-sm-n925a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-n925a>
+  <samsung-sm-t707a>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>44100</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>4800</baudRate>
+  </samsung-sm-t707a>
+  <sm-a700fd>
+   <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>11025</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>2400</baudRate>
+  </sm-a700fd>
+  <sm-t900>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t900>
+  <sm-g925t>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g925t>
+  <sm-g920t>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g920t>
+  <sm-g925v>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g925v>
+  <sm-g920v>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g920v>
+  <samsung-sm-g925a>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </samsung-sm-g925a>
+  <sm-g925p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g925p>
+  <sm-g920p>
+   <support_status val="ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </sm-g920p>
+  <sm-t237p>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t237p>
   <sm-n910v>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -2073,6 +2799,20 @@
    <OutputFreq>48000</OutputFreq>
    <baudRate>9600</baudRate>
   </sm-n910t>
+  <sm-n910t3>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-n910t3>
+  <samsung-sm-n910a>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </samsung-sm-n910a>
   <sm-p607t>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -2133,6 +2873,13 @@
    <baudRate>9600</baudRate>
    <powerupLastBeforeCMD>300</powerupLastBeforeCMD>
   </sm-t337v>
+  <sm-t337p>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sm-t337p>
   <gt-n5100>
    <support_status val="um2g=m;ump=m;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -2155,11 +2902,12 @@
    <baudRate>9600</baudRate>
   </sm-t537v>
   <sm-t530nu>
-   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
    <baudRate>9600</baudRate>
+   <volumeLevelAdjust>2</volumeLevelAdjust>
   </sm-t530nu>
   <gt-p5200>
    <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
@@ -2204,42 +2952,42 @@
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </sm-g900m>
   <samsung-sm-g900a>
    <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </samsung-sm-g900a>
   <sm-g900v>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </sm-g900v>
   <sm-g900t>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </sm-g900t>
   <sm-g900p>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </sm-g900p>
   <sm-g900r4>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>48000</InputFreq>
    <OutputFreq>48000</OutputFreq>
-   <baudRate>9600</baudRate>
+   <baudRate>4800</baudRate>
   </sm-g900r4>
   <gt-i9505g>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
@@ -2439,7 +3187,7 @@
    <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
    <InputFreq>44100</InputFreq>
-   <OutputFreq>24000</OutputFreq>
+   <OutputFreq>48000</OutputFreq>
    <baudRate>9600</baudRate>
   </gt-p3113>
   <gt-i9300>
@@ -2925,6 +3673,14 @@
    <OutputFreq>48000</OutputFreq>
    <baudRate>9600</baudRate>
   </gt-s5310b>
+  <sm-t116nu>
+   <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
+   <directionOutputWave>0</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+   <force_headset_plug>1</force_headset_plug>
+  </sm-t116nu>
  </prefix_vr_samsung>
  <prefix_vr_sony>
   <d2005>
@@ -2972,6 +3728,13 @@
    <baudRate>4800</baudRate>
    <powerupLastBeforeCMD>1000</powerupLastBeforeCMD>
   </sgp511>
+  <sgp561>
+   <support_status val="unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </sgp561>
  </prefix_vr_sony>
  <prefix_vr_sonyericsson>
   <lt26i>
@@ -3042,7 +3805,78 @@
    <volumeLevelAdjust>-1</volumeLevelAdjust>
   </u8655-1>
  </prefix_vr_huawei>
+ <prefix_vr_kewei>
+  <ft141b>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </ft141b>
+ </prefix_vr_kewei>
  <prefix_vr_lge>
+  <lg-h872>
+   <support_status val="um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>4800</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </lg-h872>
+  <lg-h871>
+   <support_status val="um2=m;um2i=m;shuttle=m;unipay=m"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>24000</InputFreq>
+   <OutputFreq>24000</OutputFreq>
+   <baudRate>4800</baudRate>
+   <volumeLevelAdjust>1</volumeLevelAdjust>
+  </lg-h871>
+  <lg-as991>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lg-as991>
+  <lgas995>
+   <support_status val="shuttle=s;unipay=s"> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lgas995>
+  <nexus5x>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </nexus5x>
+  <vk815>
+   <support_status val=""> </support_status>
+   <shuttle_channel val="n"> </shuttle_channel>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>4800</baudRate>
+  </vk815>
+  <lg-v521>
+   <support_status val="ump=s;um2=s;um2i=s;shuttle=s;unipay=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </lg-v521>
+  <vs880>
+   <support_status val=""> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>48000</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </vs880>
   <lg-as990>
    <support_status val="um2g=m;ump=m;um2=m;um2i=m;shuttle=m"> </support_status>
    <directionOutputWave>1</directionOutputWave>
@@ -3078,6 +3912,13 @@
    <OutputFreq>48000</OutputFreq>
    <baudRate>9600</baudRate>
   </vs9854g>
+  <vs986>
+   <support_status val="um2g=s;ump=s;um2=s;um2i=s;shuttle=s"> </support_status>
+   <directionOutputWave>1</directionOutputWave>
+   <InputFreq>44100</InputFreq>
+   <OutputFreq>48000</OutputFreq>
+   <baudRate>9600</baudRate>
+  </vs986>
   <lg-d520>
    <support_status val="um2=s;um2i=s;shuttle=s"> </support_status>
    <directionOutputWave>1</directionOutputWave>
